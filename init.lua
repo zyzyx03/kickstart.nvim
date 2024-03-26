@@ -552,7 +552,6 @@ require('lazy').setup({
             'javascriptreact',
             'typescript',
             'typescriptreact',
-            'svelte',
             'vue',
             'templ',
           },
@@ -582,7 +581,6 @@ require('lazy').setup({
                 javascriptreact = 'javascript',
                 typescript = 'javascript',
                 typescriptreact = 'javascript',
-                svelte = 'html',
                 vue = 'html',
                 templ = 'html',
               },
@@ -605,13 +603,6 @@ require('lazy').setup({
         templ = {
           filetypes = { 'templ' },
           cmd = { '/home/rafael/go/bin/templ', 'lsp' },
-        },
-  
-        -- svelte / sveltekit
-        svelte = {
-          cmd = { 'svelteserver', '--stdio' },
-          filetypes = { 'svelte' },
-          root_dir = require('lspconfig').util.root_pattern('svelte.config.js', '.git'),
         },
   
         -- Python
