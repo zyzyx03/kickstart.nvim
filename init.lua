@@ -596,10 +596,6 @@ require('lazy').setup({
           filetypes = { 'html', 'templ' },
         },
   
-        htmx = {
-          filetypes = { 'html', 'templ' },
-        },
-  
         templ = {
           filetypes = { 'templ' },
           cmd = { '/home/rafael/go/bin/templ', 'lsp' },
