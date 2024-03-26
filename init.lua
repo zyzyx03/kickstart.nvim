@@ -538,25 +538,103 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
-
+        gopls = {
+          filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+          single_file_support = true,
+        },
+  
+        tailwindcss = {
+          filetypes = {
+            'html',
+            'css',
+            'scss',
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'svelte',
+            'vue',
+            'templ',
+          },
+          root_dir = require('lspconfig').util.root_pattern(
+            'tailwind.config.js',
+            'tailwind.config.cjs',
+            'tailwind.config.ts',
+            'tailwind.config.tsx',
+            'tailwind.config.json',
+            '.git'
+          ),
+          settings = {
+            tailwindCSS = {
+              classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
+              lint = {
+                cssConflict = 'warning',
+                invalidApply = 'error',
+                invalidConfigPath = 'error',
+                invalidScreen = 'error',
+                invalidTailwindDirective = 'error',
+                invalidVariant = 'error',
+                recommendedVariantOrder = 'warning',
+              },
+              includeLanguages = {
+                css = 'css',
+                javascript = 'javascript',
+                javascriptreact = 'javascript',
+                typescript = 'javascript',
+                typescriptreact = 'javascript',
+                svelte = 'html',
+                vue = 'html',
+                templ = 'html',
+              },
+              validate = true,
+            },
+          },
+        },
+  
+        -- Typescript / Javascript
+        tsserver = {},
+  
+        html = {
+          filetypes = { 'html', 'templ' },
+        },
+  
+        htmx = {
+          filetypes = { 'html', 'templ' },
+        },
+  
+        templ = {
+          filetypes = { 'templ' },
+          cmd = { '/home/rafael/go/bin/templ', 'lsp' },
+        },
+  
+        -- svelte / sveltekit
+        svelte = {
+          cmd = { 'svelteserver', '--stdio' },
+          filetypes = { 'svelte' },
+          root_dir = require('lspconfig').util.root_pattern('svelte.config.js', '.git'),
+        },
+  
+        -- Python
+        pylsp = {},
+  
         lua_ls = {
           -- cmd = {...},
-          -- filetypes = { ...},
+          -- filetypes { ...},
           -- capabilities = {},
           settings = {
             Lua = {
+              runtime = { version = 'LuaJIT' },
+              workspace = {
+                checkThirdParty = false,
+                -- Tells lua_ls where to find all the Lua files that you have loaded
+                -- for your neovim configuration.
+                library = {
+                  '${3rd}/luv/library',
+                  unpack(vim.api.nvim_get_runtime_file('', true)),
+                },
+                -- If lua_ls is really slow on your computer, you can try this instead:
+                -- library = { vim.env.VIMRUNTIME },
+              },
               completion = {
                 callSnippet = 'Replace',
               },
