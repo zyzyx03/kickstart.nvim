@@ -600,7 +600,13 @@ require('lazy').setup({
           filetypes = { 'templ' },
           cmd = { '/home/rafael/go/bin/templ', 'lsp' },
         },
-  
+        
+        -- Astro
+        astro = {},
+
+        -- Yaml
+        yamlls = {},
+
         -- Python
         pylsp = {},
   
