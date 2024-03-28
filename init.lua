@@ -402,6 +402,18 @@ require('lazy').setup({
     end,
   },
 
+  -- devicons
+  require('nvim-web-devicons').setup {
+    strict = true,
+    override_by_extension = {
+      astro = {
+        icon = '',
+        color = '#EF8547',
+        name = 'astro',
+      },
+    },
+  },
+
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -542,7 +554,7 @@ require('lazy').setup({
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           single_file_support = true,
         },
-  
+
         tailwindcss = {
           filetypes = {
             'html',
@@ -588,19 +600,19 @@ require('lazy').setup({
             },
           },
         },
-  
+
         -- Typescript / Javascript
         tsserver = {},
-  
+
         html = {
           filetypes = { 'html', 'templ' },
         },
-  
+
         templ = {
           filetypes = { 'templ' },
           cmd = { '/home/rafael/go/bin/templ', 'lsp' },
         },
-        
+
         -- Astro
         astro = {},
 
@@ -609,7 +621,7 @@ require('lazy').setup({
 
         -- Python
         pylsp = {},
-  
+
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -907,7 +919,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-   { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
