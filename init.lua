@@ -403,7 +403,7 @@ require('lazy').setup({
   },
 
   -- devicons
-  require('nvim-web-devicons').setup {
+  require('nvim-tree/nvim-web-devicons').setup {
     strict = true,
     override_by_extension = {
       astro = {
