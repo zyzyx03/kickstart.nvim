@@ -1,14 +1,26 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
+  'nvim-neo-tree/neo-tree.nvim',
+  branch = 'v3.x',
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
+    'nvim-lua/plenary.nvim',
+    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'MunifTanjim/nui.nvim',
   },
+  setup = function()
+    -- Overwrite devicons
+    require('nvim-web-devicons').setup {
+      override = {
+        astro = {
+          icon = '',
+          color = '#EF8547',
+          name = 'astro',
+        },
+      },
+    }
+  end,
   opts = {
     window = {
-      position = "left",
+      position = 'left',
       width = 40,
       mapping_options = {
         noremap = true,
@@ -22,7 +34,7 @@ return {
         hide_gitignored = true,
         hide_hidden = true, -- only works on Windows for hidden files/directories
         hide_by_name = {
-          "node_modules"
+          'node_modules',
         },
         hide_by_pattern = { -- uses glob style patterns
           --"*.meta",
@@ -40,20 +52,21 @@ return {
         },
       },
       follow_current_file = {
-        enabled = false,                      -- This will find and focus the file in the active buffer every time
+        enabled = false, -- This will find and focus the file in the active buffer every time
         --               -- the current file is changed while the tree is open.
-        leave_dirs_open = false,              -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
       },
-      group_empty_dirs = false,               -- when true, empty folders will be grouped together
-      hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
+      group_empty_dirs = false, -- when true, empty folders will be grouped together
+      hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
     },
   },
   config = function()
-    require("neo-tree").setup()
-    vim.keymap.set("n", "<leader>T", "<Cmd>Neotree toggle<CR>")
-    vim.keymap.set("n", "<leader>|", "<Cmd>Neotree reveal<CR>")
-    vim.keymap.set("n", "gd", "<Cmd>:Neotree float reveal_file=<cfile> reveal_force_cwd<CR>")
-    vim.keymap.set("n", "<leader>Br", "<Cmd>:Neotree toggle show buffers right<CR>")
-    vim.keymap.set("n", "<leader>Gs", "<Cmd>:Neotree float git_status<CR>")
-  end
+    require('neo-tree').setup()
+    vim.keymap.set('n', '<leader>T', '<Cmd>Neotree toggle<CR>')
+    vim.keymap.set('n', '<leader>|', '<Cmd>Neotree reveal<CR>')
+    vim.keymap.set('n', 'gd', '<Cmd>:Neotree float reveal_file=<cfile> reveal_force_cwd<CR>')
+    vim.keymap.set('n', '<leader>Br', '<Cmd>:Neotree toggle show buffers right<CR>')
+    vim.keymap.set('n', '<leader>Gs', '<Cmd>:Neotree float git_status<CR>')
+  end,
 }
+
