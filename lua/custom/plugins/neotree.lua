@@ -6,18 +6,6 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  setup = function()
-    -- Overwrite devicons
-    require('nvim-web-devicons').setup {
-      override = {
-        astro = {
-          icon = '',
-          color = '#EF8547',
-          name = 'astro',
-        },
-      },
-    }
-  end,
   opts = {
     window = {
       position = 'left',
