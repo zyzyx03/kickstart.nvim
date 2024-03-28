@@ -402,18 +402,6 @@ require('lazy').setup({
     end,
   },
 
-  -- devicons
-  require('nvim-tree/nvim-web-devicons').setup {
-    strict = true,
-    override_by_extension = {
-      astro = {
-        icon = '',
-        color = '#EF8547',
-        name = 'astro',
-      },
-    },
-  },
-
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
