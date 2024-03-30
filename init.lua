@@ -542,6 +542,11 @@ require('lazy').setup({
         gopls = {
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           single_file_support = true,
+	  completeUnimported = true,
+	  usePlaceholders = true,
+	  analyses = {
+	    unusedparams = true,
+	  }
         },
 
         tailwindcss = {
